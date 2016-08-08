@@ -1,4 +1,6 @@
 
+# Create a shell script to concatenate the fasta files for each chromosome to one large
+# fasta file to make the mm9 genome fasta
 output = open("/Users/madisonzwink/Desktop/GBS_project/demultiplex/mm9_genome.sh", "w")
 
 output.write("cd /Users/madisonzwink/Desktop/GBS_project/demultiplex/\n")

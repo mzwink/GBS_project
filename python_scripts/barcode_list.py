@@ -1,3 +1,5 @@
+
+# A function that will make a sorted list of barcodes for Stacks program
 def make_barcode_list(filename):
     barcode_file = open(filename)
     barcode_lines = barcode_file.readlines()

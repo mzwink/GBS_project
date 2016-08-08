@@ -1,3 +1,5 @@
+
+# function to create a list of sorted barcodes to identify different samples
 def make_barcode_list(filename):
     barcode_file = open(filename)
     barcode_lines = barcode_file.readlines()
@@ -16,7 +18,7 @@ def make_barcode_list(filename):
 
     return sorted(barcode_list)
 
-
+# make list of barcodes and open shell script to concatenate reads together
 barcodes = make_barcode_list("barcode_stack_format.txt")
 output = open("cat_files_script.sh", "w")
 output.write("cd /Volumes/MW_18TB/NextGen_RawData/Mouse_GBS_CASTxDOM_F2/Run2/indiv\n")

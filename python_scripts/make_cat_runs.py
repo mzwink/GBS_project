@@ -1,3 +1,4 @@
+# function to make sorted barcode list
 def make_barcode_list(filename):
     barcode_file = open(filename)
     barcode_lines = barcode_file.readlines()
@@ -16,6 +17,7 @@ def make_barcode_list(filename):
 
     return sorted(barcode_list)
 
+# make barcode list and create a shell script to write commands to concatenate runs together
 barcodes = make_barcode_list("barcode_stack_format.txt")
 output = open("cat_runs_script.sh", "w")
 

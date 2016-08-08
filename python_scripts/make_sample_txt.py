@@ -1,3 +1,4 @@
+# function to make sorted list of barcodes
 def make_barcode_list(filename):
     barcode_file = open(filename)
     barcode_lines = barcode_file.readlines()
@@ -19,7 +20,7 @@ def make_barcode_list(filename):
 barcodes = make_barcode_list("barcode_stack_format.txt")
 output = open("sample_names.txt", "w")
 
-
+# Write the neames of the samples to a text file for sapelo submission use 
 for i in range(0,96):
     for run_num in range(1,3):
         output.write(str(barcodes[i]) + "_runs_combined_" + str(run_num) + ".fq.gz\n")
