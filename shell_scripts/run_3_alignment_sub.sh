@@ -7,8 +7,6 @@ read fetch
 while read -r line
 do
 
-
-
 $(cat << EOF > /home/mz00685/mice_alignment/alignment_individual_sub.sh
 #PBS -S /bin/bash
 #PBS -q batch
@@ -19,7 +17,6 @@ $(cat << EOF > /home/mz00685/mice_alignment/alignment_individual_sub.sh
 #PBS -M mzwink@uga.edu
 #PBS -m ae
 #PBS -j oe
-
 
 /home/mz00685/mice_alignment/bowtie_sub.sh -s ${line}
 EOF
