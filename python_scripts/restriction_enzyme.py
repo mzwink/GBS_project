@@ -6,7 +6,7 @@ from Bio import SeqIO
 # open genome fasta and create output for catalog and sequences of ~500 bp around cut site
 mouse_genome = "/Users/madisonzwink/Desktop/GBS_project/demultiplex/mice_genome/mm9_genome.fa"
 output = open("/Users/madisonzwink/Desktop/GBS_project/demultiplex/restriction_enzyme_catalog.txt", 'w')
-test_output = open("/Users/madisonzwink/Desktop/GBS_project/demultiplex/sequence_test.txt", 'w')
+#test_output = open("/Users/madisonzwink/Desktop/GBS_project/demultiplex/sequence_test.txt", 'w')
 
 # parse the genome fasta file
 fasta_sequences = SeqIO.parse(open(mouse_genome), 'fasta')
@@ -33,46 +33,57 @@ for fasta in fasta_sequences:
         cut_site_start = match.start() + 1
         cut_site_end = match.end()
 
+        # when checking read depth, start 10 bp into the cut site
+        read_depth_check = cut_site_start + 10
+
         # to pull out 500 bp around the cut site
-        sequence_start = cut_site_start - 250
-        sequence_end = cut_site_end + 250
+        #sequence_start = cut_site_start - 250
+        #sequence_end = cut_site_end + 250
 
         # Catalog of where in the genome the enzyme is predicted to cut
-        output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\t" + str(cut_site_end) + "\t" + "forward\n")
+        output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\t" + str(cut_site_end) + "\t" + str(read_depth_check) + "\tforward\n")
 
         # 500 bp of the sequence around the cut site
-        test_output.write(str(fasta.id) + ">\n" + str(sequence[sequence_start:sequence_end]) + "\n")
+        #test_output.write(str(fasta.id) + ">\n" + str(sequence[sequence_start:sequence_end]) + "\n")
 
     # Do the same for the other patterns the enzyme will recognize
     for match in neg_match_list.finditer(sequence):
         cut_site_start = match.start() + 4
         cut_site_end = match.end()
 
-        output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\t" + str(cut_site_end) + "\t" + "reverse\n")
+        read_depth_check = cut_site_start + 10
 
-        sequence_start = cut_site_start - 250
-        sequence_end = cut_site_end + 250
+        output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\t" + str(cut_site_end) + "\t" + str(read_depth_check) + "\treverse\n")
 
-        test_output.write(str(fasta.id) + ">\n" + str(sequence[sequence_start:sequence_end]) + "\n")
+        #sequence_start = cut_site_start - 250
+        #sequence_end = cut_site_end + 250
+
+        #test_output.write(str(fasta.id) + ">\n" + str(sequence[sequence_start:sequence_end]) + "\n")
 
 
     for match in pos_masked_match_list.finditer(sequence):
         cut_site_start = match.start() + 1
         cut_site_end = match.end()
-        output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\t" + str(cut_site_end) + "\t" + "forward/masked\n")
 
-        sequence_start = cut_site_start - 250
-        sequence_end = cut_site_end + 250
+        read_depth_check = cut_site_start + 10
 
-        test_output.write(str(fasta.id) + ">\n" + str(sequence[sequence_start:sequence_end]) + "\n")
+        output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\t" + str(cut_site_end) + "\t" + str(read_depth_check) + "\tforward/masked\n")
+
+        #sequence_start = cut_site_start - 250
+        #sequence_end = cut_site_end + 250
+
+        #test_output.write(str(fasta.id) + ">\n" + str(sequence[sequence_start:sequence_end]) + "\n")
 
 
     for match in neg_masked_match_list.finditer(sequence):
         cut_site_start = match.start() + 4
         cut_site_end = match.end()
-        output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\t" + str(cut_site_end) + "\t" + "reverse/masked\n" )
 
-        sequence_start = cut_site_start - 250
-        sequence_end = cut_site_end + 250
+        read_depth_check = cut_site_start + 10
 
-        test_output.write(str(fasta.id) + ">\n" + str(sequence[sequence_start:sequence_end]) + "\n")
+        output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\t" + str(cut_site_end) + "\t" + str(read_depth_check) + "\treverse/masked\n" )
+
+        #sequence_start = cut_site_start - 250
+        #sequence_end = cut_site_end + 250
+
+        #test_output.write(str(fasta.id) + ">\n" + str(sequence[sequence_start:sequence_end]) + "\n")
