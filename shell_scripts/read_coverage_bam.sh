@@ -8,8 +8,12 @@
 #PBS -m ae
 #PBS -j oe
 
-export bam_file
+export bam_file #once I have bam file include path
 
+
+module load samtools/latest
 module load bamtools/2.4.0
 
-bamtools coverage -in bam_file - out bam_coverage.stdout
+samtools sort -n bam_file - o bam_file_sort.bam
+
+bamtools coverage -in bam_file_sort.bam - out bam_coverage.stdout
