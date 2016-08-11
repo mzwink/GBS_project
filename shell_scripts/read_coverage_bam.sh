@@ -8,11 +8,12 @@
 #PBS -m ae
 #PBS -j oe
 
-export bam_file #once I have bam file include path
+cd /lustre1/mz00685/mice_alignment/
 
 
 module load samtools/latest
 module load bamtools/2.4.0
 
-samtools sort -n bam_file -o bam_file_sort.bam
-bamtools coverage -in bam_file_sort.bam -out bam_coverage.stdout
+samtools cat -o run_1_2.bam run_3.bam
+samtools sort -n run_1_2.bam -o runs_sorted.bam
+bedtools genomecov -ibam runs_sorted.bam -bga >> read_depth_bedgraph.txt

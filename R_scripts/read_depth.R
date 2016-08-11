@@ -12,6 +12,6 @@ bedgraph_file <- read.delim(file_name, header = FALSE, col.names=c("chromosome",
 # rollapply function to make sliding window
 # play around with values to make best sliding window for data
 
-window_size = 100
+window_size = 100 #by 100 bp? Change if needed
 
 loci <- rollapply(bedgraph_file, by = window_size, FUN = mean)
