@@ -12,8 +12,10 @@ cd /lustre1/mz00685/mice_alignment/
 
 
 module load samtools/latest
-module load bamtools/2.4.0
+module load bedtools/2.26.0
 
+samtools index run_3_alignment.sam
+samtools view -b run_3_alignment.sam > run_3.bam
 samtools cat -o run_1_2.bam run_3.bam
 samtools sort -n run_1_2.bam -o runs_sorted.bam
 bedtools genomecov -ibam runs_sorted.bam -bga >> read_depth_bedgraph.txt
