@@ -18,7 +18,7 @@ $(cat << EOF > /home/mz00685/mice_alignment/alignment_individual_sub.sh
 #PBS -m ae
 #PBS -j oe
 
-/home/mz00685/mice_alignment/bowtie_sub.sh -s ${line}
+/home/mz00685/mice_alignment/scripts/bowtie_sub.sh -s ${line}
 EOF
 )
 

@@ -24,34 +24,17 @@ cd /lustre1/mz00685/mice_alignment/ #genome/fastq/stickleback_fastq/${sample}
 
 #/path-to-bowtie-programs/bowtie2-build genome.fa mm9
 
-
-
 module load bowtie2/latest
-shopt -s nullglob
-set -- *_2.fq.gz
-if [ "$#" -gt 0 ]
-  then
-      export read2_list=`ls -m *_2.fq.gz | tr -d ' \n'`
-      bowtie2 -p ${cores} --no-unal --very-sensitive -x /lustre1/mz00685/mice_alignment/mm9_genome.fa \
-      -1 ${read1_list} \
-      -2 ${read2_list} \
-      --rg-id ${sample}_${runNum} \
-      --rg SM:${sample} \
-      --rg PL:ILLUMINA \
-      --rg LB:${runNum} \
-      -S /lustre1/mz00685/mice_alignment/sam/${sample}.sam \
-      >& ${sample}_${runNum}_summary.txt
 
-  else
-      bowtie2 -p ${cores} --no-unal --very-sensitive -x /lustre1/mz00685/mice_alignment/mm9_genome.fa \
-      -U ${read1_list} \
-      --rg-id ${sample}_${runNum} \
-      --rg SM:${sample} \
-      --rg PL:ILLUMINA \
-      --rg LB:${runNum} \
-      -S /lustre1/mz00685/mice_alignment/sam/${sample}.sam \
-      >& ${sample}_${runNum}_summary.txt
-fi
+bowtie2 -p ${cores} --no-unal --very-sensitive -x /lustre1/mz00685/mice_alignment/mm9_genome.fa \
+-1 samples_combined_1.fq.gz \
+-2 samples_combined_2.fq.gz \
+--rg-id all_samples \
+--rg SM:all_samples \
+--rg PL:ILLUMINA \
+--rg LB:all_runs \
+-S /home/mz00685/mice_alignment/sam/all_samples.sam \
+>& all_samples_summary.txt
 
 # Sort, index
 module load samtools/latest
