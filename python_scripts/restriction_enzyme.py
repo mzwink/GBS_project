@@ -10,7 +10,6 @@ output = open("/Users/madisonzwink/Desktop/GBS_project/demultiplex/restriction_e
 
 # parse the genome fasta file
 fasta_sequences = SeqIO.parse(open(mouse_genome), 'fasta')
-#with open("mouse_genome_read.txt") as out_file:
 for fasta in fasta_sequences:
     name, sequence = fasta.id, str(fasta.seq)
 
