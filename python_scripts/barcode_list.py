@@ -1,4 +1,5 @@
 
+#output = open("/Users/madisonzwink/Desktop/GBS_project/demultiplex/list_of_samples.txt", "w")
 # A function that will make a sorted list of barcodes for Stacks program
 def make_barcode_list(filename):
     barcode_file = open(filename)
@@ -22,4 +23,6 @@ def make_barcode_list(filename):
 barcodes = make_barcode_list("barcode_stack_format.txt")
 
 for i in range(0,96):
-    print(barcodes[i])
+    #print(barcodes[i])
+
+    #output.write(str(barcodes[i]) + ".2.fq.gz,")
