@@ -1,6 +1,6 @@
 #PBS -S /bin/bash
 #PBS -q batch
-#PBS -N ${line}
+#PBS -N all_sample_run
 #PBS -l nodes=1:ppn=12:AMD
 #PBS -l mem=2gb
 #PBS -l walltime=96:00:00
