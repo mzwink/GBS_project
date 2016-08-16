@@ -15,6 +15,6 @@ module load samtools/latest
 module load bedtools/2.26.0
 
 samtools cat -o runs_aligned.bam *.bam
-samtools sort -n run_aligned -o runs_sorted.bam
-samtools index -b run_sorted.bam
+samtools sort -T sorted -o runs_sorted.bam runs_aligned.bam
+samtools index -b runs_sorted.bam
 bedtools genomecov -ibam runs_sorted.bam -bga >> read_depth_bedgraph.txt

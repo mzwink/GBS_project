@@ -37,7 +37,7 @@ shopt -s nullglob
 set -- *_2.fq.gz
 if [ "$#" -gt 0 ]
   then
-      export read2_list=`ls -m *_2.fq.gz | tr -d ' \n'`
+      export read2_list=`ls -m *_2.fq.gz | tr -d '\n'`
       bowtie2 -p ${cores} --no-unal --very-sensitive -x /lustre1/mz00685/mice_alignment/mm9_genome.fa \
       -1 ${read1_list} \
       -2 ${read2_list} \

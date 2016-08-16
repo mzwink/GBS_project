@@ -11,6 +11,8 @@ bedgraph_file <- read.delim(file_name, header = FALSE, col.names=c("chromosome",
 
 # rollapply function to make sliding window
 # play around with values to make best sliding window for data
+# Can use merge to add cut site position to the data
+
 
 window_size = 100 #by 100 bp? Change if needed
 
