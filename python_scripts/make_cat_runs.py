@@ -19,23 +19,24 @@ def make_barcode_list(filename):
 
 # make barcode list and create a shell script to write commands to concatenate runs together
 barcodes = make_barcode_list("barcode_stack_format.txt")
-output = open("cat_runs_script.sh", "w")
+output = open("cat_indiv_sub.sh", "w")
 
-output.write("cd /Volumes/MW_18TB/NextGen_RawData/Mouse_GBS_CASTxDOM_F2/Run1/indiv\n")
-for run_num in range(1,3):
-    for i in range(0,96):
-        output.write("cat " + str(barcodes[i]) + "_combined_" + str(run_num) + ".fq.gz > " + str(barcodes[i]) + "_runs_combined_" + str(run_num) + ".fq.gz\n")
-        output.write("mv " + str(barcodes[i]) + "_runs_combined_" + str(run_num) + ".fq.gz " + "/Volumes/MW_18TB/NextGen_RawData/Mouse_GBS_CASTxDOM_F2/Run2/indiv\n" )
+output.write("module load samtools/latest\n")
+output.write("cd /lustre1/mz00685/mice_alignment/run1_bam/\n")
+
+for i in range(0,96):
+    output.write("samtools cat -o " + str(barcodes[i]) + "_comb.bam " + str(barcodes[i]) + "_RG.bam\n")
+    output.write("mv " + str(barcodes[i]) + "_comb.bam "+ "/lustre1/mz00685/mice_alignment/run2_bam/\n" )
 
 
-output.write("cd /Volumes/MW_18TB/NextGen_RawData/Mouse_GBS_CASTxDOM_F2/Run2/indiv\n")
-for run_num in range(1,3):
-    for i in range(0,96):
-        output.write("cat " + str(barcodes[i]) + "_combined_" + str(run_num) + ".fq.gz >> " + str(barcodes[i]) + "_runs_combined_" + str(run_num) + ".fq.gz\n")
-        output.write("mv " + str(barcodes[i]) + "_runs_combined_" + str(run_num) + ".fq.gz " + "/Volumes/MW_18TB/NextGen_RawData/Mouse_GBS_CASTxDOM_F2/Run3/indiv\n" )
+output.write("cd /lustre1/mz00685/mice_alignment/run2_bam/\n")
+
+for i in range(0,96):
+    output.write("samtools cat -o" + str(barcodes[i]) + "_comb.bam " + str(barcodes[i]) + "_RG.bam\n")
+    output.write("mv " + str(barcodes[i]) + "_comb.bam "+ "/lustre1/mz00685/mice_alignment/run3_bam/\n" )
 
 output.write("cd /Volumes/MW_18TB/NextGen_RawData/Mouse_GBS_CASTxDOM_F2/Run3/indiv\n")
-for run_num in range(1,3):
-    for i in range(0,96):
-        output.write("cat " + str(barcodes[i]) + "_combined_" + str(run_num) + ".fq.gz >> " + str(barcodes[i]) + "_runs_combined_" + str(run_num) + ".fq.gz\n")
-        output.write("mv " + str(barcodes[i]) + "_runs_combined_" + str(run_num) + ".fq.gz " + "/Volumes/MW_18TB/NextGen_RawData/Mouse_GBS_CASTxDOM_F2/\n" )
+
+for i in range(0,96):
+    output.write("samtools cat -o" + str(barcodes[i]) + "_comb.bam " + str(barcodes[i]) + "_RG.bam\n")
+    output.write("mv " + str(barcodes[i]) + "_comb.bam "+ "/lustre1/mz00685/mice_alignment/bamFiles/\n" )

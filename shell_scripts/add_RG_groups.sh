@@ -14,12 +14,10 @@ cd /lustre1/mz00685/mice_alignment/bamFiles
 
 export runNum=3
 export bam_list=`ls -m | tr -d ','`
-echo ${bam_list[@]}
 
 for sample in ${bam_list[@]}
 do
   name=`basename ${sample} .bam`
-  echo ${name}
   java -jar /usr/local/apps/picard/2.4.1/picard.jar AddOrReplaceReadGroups \
         I=${name}.bam \
         O=${name}_RG.bam \
