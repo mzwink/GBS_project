@@ -14,8 +14,8 @@ def make_enzyme_dict(restr_enzyme_file):
         cut_start = cut_split[1]
         cut_end = cut_split[2]
         cut_site = cut_split[3]
+        cut_info = cut_split[4]
 
-        #chrom_key = 'chr' + str(num)
         if chr_numb in restr_enzyme_dict.keys():
             restr_enzyme_dict[chr_numb].append(cut_site)
         else:
@@ -24,8 +24,8 @@ def make_enzyme_dict(restr_enzyme_file):
     return restr_enzyme_dict
 
 # leave out .bed for this function
-def read_depth_restr_cuts(bedgraph_file):
-    enzyme_dict = make_enzyme_dict("sorted_restr_enzyme_catalog.txt")
+def read_depth_restr_cuts(bedgraph_file, restr_dict):
+    enzyme_dict = restr_dict
     input_bedgraph = open(bedgraph_file + ".bed")
     read_coverage = input_bedgraph.readlines()
 
@@ -68,7 +68,7 @@ def make_barcode_list(filename):
 
 
 barcodes = make_barcode_list("barcode_stack_format.txt")
-
+restr_enzyme_dict = make_enzyme_dict("sorted_restr_enzyme_catalog.txt")
 for i in range(0,96):
     sample = str(barcodes[i])
-    read_depth_restr_cuts(str(sample) + "_comb_read_depth" )
+    read_depth_restr_cuts(str(sample) + "_read_depth_indiv", restr_enzyme_dict)
