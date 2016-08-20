@@ -77,9 +77,8 @@ barcodes = make_barcode_list("barcode_stack_format.txt")
 restr_enzyme_dict = make_enzyme_dict("sorted_restr_enzyme_catalogf.txt")
 #for i in range(0,96):
 
-    sample = str(barcodes[0])
-    read_depth_restr_cuts(str(sample) + "_indiv_read_depth", restr_enzyme_dict)
+sample = str(barcodes[0])
+read_depth_restr_cuts(str(sample) + "_indiv_read_depth_subfile_4",  restr_enzyme_dict)
 
-read_depth_restr_cuts("A10_712_indiv_read_depth", restr_enzyme_dict)
 
 #print(restr_enzyme_dict["chr10"])
