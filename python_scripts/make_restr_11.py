@@ -79,6 +79,6 @@ restr_enzyme_dict = make_enzyme_dict("restr_enzyme_sites.txt")
 
 #sample = str(barcodes[0])
 #read_depth_restr_cuts(str(sample) + "_indiv_read_depth_subfile_1",  restr_enzyme_dict)
-read_depth_restr_cuts("combined_subfile_7", restr_enzyme_dict)
+read_depth_restr_cuts("combined_subfile_11", restr_enzyme_dict)
 
 #print(restr_enzyme_dict["chr10"])
