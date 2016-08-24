@@ -14,29 +14,31 @@ def make_enzyme_dict(restr_enzyme_file):
         cut_start = cut_split[1]
         cut_end = cut_split[2]
         distance = cut_split[3]
+        #print(cut_start)
 
-        if chr_numb in restr_enzyme_dict.keys():
-            restr_enzyme_dict[chr_numb].append([cut_start, cut_end])
+        if int(cut_start) in restr_enzyme_dict.keys():
+            restr_enzyme_dict[int(cut_start)].append([chr_numb, cut_end])
         else:
-            restr_enzyme_dict[chr_numb] = [cut_start, cut_end]
+            restr_enzyme_dict[int(cut_start)] = [chr_numb, cut_end]
+            #print(str(cut_start) + ": [" + str(chr_numb) + ", " + str(cut_end) + "]\n")
 
     print("Dictionary is made.\n")
     return restr_enzyme_dict
 
-
-vcf_file = open("cast_wsb_snps.vcf")
-output = open("snp_counts.txt","w")
 restr_enzyme_file = "restr_enzyme_sites.txt"
+enzyme_dict = make_enzyme_dict(restr_enzyme_file)
+
+vcf_file = open("vcf_tester.vcf")
+output = open("vcf_tester_snps.txt","w")
 
 vcf_info = vcf_file.readlines()
-enzyme_dict = make_enzyme_dict(restr_enzyme_file)
 
 for v in vcf_info:
     count = 0
     v_strip = v.rstrip()
     v_split = v_strip.split("\t")
 
-    if v_split[0].startswith("##"):
+    if v_split[0].startswith("##") or v_split[0].startswith("#"):
         continue
     else:
         chrom_num = v_split[0]
@@ -46,10 +48,14 @@ for v in vcf_info:
         alt_allele = v_split[4]
         qual_filter = v_split[5]
 
-        for site in enzyme_dict["chr" + str(chrom_num)]:
-            cut_start = site[0]
-            cut_end = site[1]
-            if int(pos) >= int(cut_start) and int(pos) <= int(cut_end):
-                count+=1
+        for i in range(0,11):
+            possible_cut_site = int(pos) + i
 
-        output.write(str(chrom_num) + "\t" + str(pos) + "\t" + str(count) + "\n")
+            if int(possible_cut_site) in enzyme_dict.keys():
+
+                for site in enzyme_dict[int(possible_cut_site)]:
+                    chr_numb = site[0]
+                    cut_end = site[1]
+                    if str(chrom_num) == str(chr_numb) and int(possible_cut_site) <= int(cut_end):
+                        count+=1
+                        output.write(str(chrom_num) + "\t" + str(pos) + "\t" + str(count) + "\n")
