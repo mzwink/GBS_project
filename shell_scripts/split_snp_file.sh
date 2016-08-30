@@ -1,0 +1,23 @@
+cd /Users/madisonzwink/Desktop/GBS_project/demultiplex/
+grep -w '^chr1' cast_wsb_snps_edit.vcf > chr1_snps.vcf
+grep -w '^chr2' cast_wsb_snps_edit.vcf > chr2_snps.vcf
+grep -w '^chr3' cast_wsb_snps_edit.vcf > chr3_snps.vcf
+grep -w '^chr4' cast_wsb_snps_edit.vcf > chr4_snps.vcf
+grep -w '^chr5' cast_wsb_snps_edit.vcf > chr5_snps.vcf
+grep -w '^chr6' cast_wsb_snps_edit.vcf > chr6_snps.vcf
+grep -w '^chr7' cast_wsb_snps_edit.vcf > chr7_snps.vcf
+grep -w '^chr8' cast_wsb_snps_edit.vcf > chr8_snps.vcf
+grep -w '^chr9' cast_wsb_snps_edit.vcf > chr9_snps.vcf
+grep -w '^chr10' cast_wsb_snps_edit.vcf > chr10_snps.vcf
+grep -w '^chr11' cast_wsb_snps_edit.vcf > chr11_snps.vcf
+grep -w '^chr12' cast_wsb_snps_edit.vcf > chr12_snps.vcf
+grep -w '^chr13' cast_wsb_snps_edit.vcf > chr13_snps.vcf
+grep -w '^chr14' cast_wsb_snps_edit.vcf > chr14_snps.vcf
+grep -w '^chr15' cast_wsb_snps_edit.vcf > chr15_snps.vcf
+grep -w '^chr16' cast_wsb_snps_edit.vcf > chr16_snps.vcf
+grep -w '^chr17' cast_wsb_snps_edit.vcf > chr17_snps.vcf
+grep -w '^chr18' cast_wsb_snps_edit.vcf > chr18_snps.vcf
+grep -w '^chr19' cast_wsb_snps_edit.vcf > chr19_snps.vcf
+grep -w '^chrM' cast_wsb_snps_edit.vcf > chrM_snps.vcf
+grep -w '^chrX' cast_wsb_snps_edit.vcf > chrX_snps.vcf
+grep -w '^chrY' cast_wsb_snps_edit.vcf > chrY_snps.vcf

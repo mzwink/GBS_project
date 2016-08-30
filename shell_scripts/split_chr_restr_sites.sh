@@ -1,0 +1,23 @@
+cd /Users/madisonzwink/Desktop/GBS_project/demultiplex/
+grep -w '^chr1' restr_enzyme_sites.txt > chr_1_restr_enzyme_sites.txt
+grep -w '^chr2' restr_enzyme_sites.txt > chr_2_restr_enzyme_sites.txt
+grep -w '^chr3' restr_enzyme_sites.txt > chr_3_restr_enzyme_sites.txt
+grep -w '^chr4' restr_enzyme_sites.txt > chr_4_restr_enzyme_sites.txt
+grep -w '^chr5' restr_enzyme_sites.txt > chr_5_restr_enzyme_sites.txt
+grep -w '^chr6' restr_enzyme_sites.txt > chr_6_restr_enzyme_sites.txt
+grep -w '^chr7' restr_enzyme_sites.txt > chr_7_restr_enzyme_sites.txt
+grep -w '^chr8' restr_enzyme_sites.txt > chr_8_restr_enzyme_sites.txt
+grep -w '^chr9' restr_enzyme_sites.txt > chr_9_restr_enzyme_sites.txt
+grep -w '^chr10' restr_enzyme_sites.txt > chr_10_restr_enzyme_sites.txt
+grep -w '^chr11' restr_enzyme_sites.txt > chr_11_restr_enzyme_sites.txt
+grep -w '^chr12' restr_enzyme_sites.txt > chr_12_restr_enzyme_sites.txt
+grep -w '^chr13' restr_enzyme_sites.txt > chr_13_restr_enzyme_sites.txt
+grep -w '^chr14' restr_enzyme_sites.txt > chr_14_restr_enzyme_sites.txt
+grep -w '^chr15' restr_enzyme_sites.txt > chr_15_restr_enzyme_sites.txt
+grep -w '^chr16' restr_enzyme_sites.txt > chr_16_restr_enzyme_sites.txt
+grep -w '^chr17' restr_enzyme_sites.txt > chr_17_restr_enzyme_sites.txt
+grep -w '^chr18' restr_enzyme_sites.txt > chr_18_restr_enzyme_sites.txt
+grep -w '^chr19' restr_enzyme_sites.txt > chr_19_restr_enzyme_sites.txt
+grep -w '^chrM' restr_enzyme_sites.txt > chrM_restr_enzyme_sites.txt
+grep -w '^chrX' restr_enzyme_sites.txt > chrX_restr_enzyme_sites.txt
+grep -w '^chrY' restr_enzyme_sites.txt > chrY_restr_enzyme_sites.txt

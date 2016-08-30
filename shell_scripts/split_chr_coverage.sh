@@ -1,0 +1,23 @@
+cd /Users/madisonzwink/Desktop/GBS_project/demultiplex/
+grep -w '^chr1' read_depth_coverage.bed > chr_1_split_coverage.bed
+grep -w '^chr2' read_depth_coverage.bed > chr_2_split_coverage.bed
+grep -w '^chr3' read_depth_coverage.bed > chr_3_split_coverage.bed
+grep -w '^chr4' read_depth_coverage.bed > chr_4_split_coverage.bed
+grep -w '^chr5' read_depth_coverage.bed > chr_5_split_coverage.bed
+grep -w '^chr6' read_depth_coverage.bed > chr_6_split_coverage.bed
+grep -w '^chr7' read_depth_coverage.bed > chr_7_split_coverage.bed
+grep -w '^chr8' read_depth_coverage.bed > chr_8_split_coverage.bed
+grep -w '^chr9' read_depth_coverage.bed > chr_9_split_coverage.bed
+grep -w '^chr10' read_depth_coverage.bed > chr_10_split_coverage.bed
+grep -w '^chr11' read_depth_coverage.bed > chr_11_split_coverage.bed
+grep -w '^chr12' read_depth_coverage.bed > chr_12_split_coverage.bed
+grep -w '^chr13' read_depth_coverage.bed > chr_13_split_coverage.bed
+grep -w '^chr14' read_depth_coverage.bed > chr_14_split_coverage.bed
+grep -w '^chr15' read_depth_coverage.bed > chr_15_split_coverage.bed
+grep -w '^chr16' read_depth_coverage.bed > chr_16_split_coverage.bed
+grep -w '^chr17' read_depth_coverage.bed > chr_17_split_coverage.bed
+grep -w '^chr18' read_depth_coverage.bed > chr_18_split_coverage.bed
+grep -w '^chr19' read_depth_coverage.bed > chr_19_split_coverage.bed
+grep -w '^chrM' read_depth_coverage.bed > chrM_split_coverage.bed
+grep -w '^chrX' read_depth_coverage.bed > chrX_split_coverage.bed
+grep -w '^chrY' read_depth_coverage.bed > chrY_split_coverage.bed
