@@ -1,0 +1,23 @@
+cd /lustre1/mz00685/mice_alignment/x_coverage/3x_cov/
+grep -w '^chr1' 4x_coverage_stats.txt  > chr1_4x_cov.txt
+grep -w '^chr2' 4x_coverage_stats.txt  > chr2_4x_cov.txt
+grep -w '^chr3' 4x_coverage_stats.txt  > chr3_4x_cov.txt
+grep -w '^chr4' 4x_coverage_stats.txt  > chr4_4x_cov.txt
+grep -w '^chr5' 4x_coverage_stats.txt  > chr5_4x_cov.txt
+grep -w '^chr6' 4x_coverage_stats.txt  > chr6_4x_cov.txt
+grep -w '^chr7' 4x_coverage_stats.txt  > chr7_4x_cov.txt
+grep -w '^chr8' 4x_coverage_stats.txt  > chr8_4x_cov.txt
+grep -w '^chr9' 4x_coverage_stats.txt  > chr9_4x_cov.txt
+grep -w '^chr10' 4x_coverage_stats.txt  > chr10_4x_cov.txt
+grep -w '^chr11' 4x_coverage_stats.txt  > chr11_4x_cov.txt
+grep -w '^chr12' 4x_coverage_stats.txt  > chr12_4x_cov.txt
+grep -w '^chr13' 4x_coverage_stats.txt  > chr13_4x_cov.txt
+grep -w '^chr14' 4x_coverage_stats.txt  > chr14_4x_cov.txt
+grep -w '^chr15' 4x_coverage_stats.txt  > chr15_4x_cov.txt
+grep -w '^chr16' 4x_coverage_stats.txt  > chr16_4x_cov.txt
+grep -w '^chr17' 4x_coverage_stats.txt  > chr17_4x_cov.txt
+grep -w '^chr18' 4x_coverage_stats.txt  > chr18_4x_cov.txt
+grep -w '^chr19' 4x_coverage_stats.txt  > chr19_4x_cov.txt
+grep -w '^chrM' 4x_coverage_stats.txt  > chrM_4x_cov.txt
+grep -w '^chrX' 4x_coverage_stats.txt  > chrX_4x_cov.txt
+grep -w '^chrY' 4x_coverage_stats.txt  > chrY_4x_cov.txt
