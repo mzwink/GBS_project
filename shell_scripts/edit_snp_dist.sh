@@ -1,0 +1,23 @@
+cd /Users/madisonzwink/Desktop/GBS_project/demultiplex/snp_counts/
+awk '$4 > 0' chr1_dist.txt  > chr1_snp_dist.txt
+awk '$4 > 0' chr2_dist.txt  > chr2_snp_dist.txt
+awk '$4 > 0' chr3_dist.txt  > chr3_snp_dist.txt
+awk '$4 > 0' chr4_dist.txt  > chr4_snp_dist.txt
+awk '$4 > 0' chr5_dist.txt  > chr5_snp_dist.txt
+awk '$4 > 0' chr6_dist.txt  > chr6_snp_dist.txt
+awk '$4 > 0' chr7_dist.txt  > chr7_snp_dist.txt
+awk '$4 > 0' chr8_dist.txt  > chr8_snp_dist.txt
+awk '$4 > 0' chr9_dist.txt  > chr9_snp_dist.txt
+awk '$4 > 0' chr10_dist.txt  > chr10_snp_dist.txt
+awk '$4 > 0' chr11_dist.txt  > chr11_snp_dist.txt
+awk '$4 > 0' chr12_dist.txt  > chr12_snp_dist.txt
+awk '$4 > 0' chr13_dist.txt  > chr13_snp_dist.txt
+awk '$4 > 0' chr14_dist.txt  > chr14_snp_dist.txt
+awk '$4 > 0' chr15_dist.txt  > chr15_snp_dist.txt
+awk '$4 > 0' chr16_dist.txt  > chr16_snp_dist.txt
+awk '$4 > 0' chr17_dist.txt  > chr17_snp_dist.txt
+awk '$4 > 0' chr18_dist.txt  > chr18_snp_dist.txt
+awk '$4 > 0' chr19_dist.txt  > chr19_snp_dist.txt
+awk '$4 > 0' chrM_dist.txt  > chrM_snp_dist.txt
+awk '$4 > 0' chrX_dist.txt  > chrX_snp_dist.txt
+awk '$4 > 0' chrY_dist.txt  > chrY_snp_dist.txt
