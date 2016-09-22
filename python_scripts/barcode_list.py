@@ -22,7 +22,11 @@ def make_barcode_list(filename):
 
 barcodes = make_barcode_list("barcode_stack_format.txt")
 
+<<<<<<< HEAD
 print(barcodes[53])
+=======
+print(barcodes[85])
+>>>>>>> f57be2c4f286e83c17d144b3d1b5064de68fb4af
 
 #for i in range(0,96):
     #print(barcodes[i])
