@@ -24,21 +24,21 @@ while getopts ":s:" opt; do
 done
 
 
-cd /lustre1/mz00685/mice_alignment/ #${sample}
+cd /lustre1/mz00685/mice_alignment/combined_runs #${sample}
 
 # Align
-export read1_list=`ls -m *_1.fq.gz | tr -d ' \n'`
+export read1_list=`ls -m *_1.trimmed.fastq.gz | tr -d ' \n'`
 
 
 #/path-to-bowtie-programs/bowtie2-build genome.fa mm9
 
 module load bowtie2/latest
 shopt -s nullglob
-set -- *_2.fq.gz
+set -- *_2.trimmed.fastq.gz
 if [ "$#" -gt 0 ]
   then
       export read2_list=`ls -m *_2.fq.gz | tr -d '\n'`
-      bowtie2 -p ${cores} --no-unal --very-sensitive -x /lustre1/mz00685/mice_alignment/mm9_genome.fa \
+      bowtie2 -p ${cores} --no-unal --very-sensitive -x mm9_index/mm9 \
       -1 ${read1_list} \
       -2 ${read2_list} \
       --rg-id ${sample}_${runNum} \
@@ -49,7 +49,7 @@ if [ "$#" -gt 0 ]
       >& ${sample}_${runNum}_summary.txt
 
   else
-      bowtie2 -p ${cores} --no-unal --very-sensitive -x /lustre1/mz00685/mice_alignment/mm9_genome.fa \
+      bowtie2 -p ${cores} --no-unal --very-sensitive -x mm9_index/mm9 \
       -U ${read1_list} \
       --rg-id ${sample}_${runNum} \
       --rg SM:${sample} \
@@ -61,7 +61,7 @@ fi
 
 # Sort, index
 module load samtools/latest
-cd /lustre1/mz00685/mice_alignment/sam
+cd /lustre1/mz00685/mice_alignment/combined_runs/sam
 samtools view -bh -@ $(expr ${cores} - 1) ${sample}.sam > ${sample}.bam
 samtools sort -o ${sample}_sorted.bam -T ${sample}_s -@ ${cores} ${sample}.bam
 mv ${sample}_sorted.bam ${sample}.bam

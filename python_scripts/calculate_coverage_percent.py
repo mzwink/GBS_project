@@ -30,14 +30,16 @@ def num_samples_per_loci(filename):
 
     return sample_list
 
-loci_id_list = make_loci_list("uniq_rx_15_loci.txt")
-num_samples = num_samples_per_loci("num_samples_per_loci_rx15_3x.txt")
-output = open("coverage_per_loci_rx15_3x.txt", "w")
+loci_id_list = make_loci_list("loci_id_rx2_4x.txt")
+num_samples = num_samples_per_loci("num_samples_per_loci_rx2_4x.txt")
+output = open("coverage_per_loci_rx2_4x.txt", "w")
 
 for i in range(0,len(loci_id_list)):
-    loci_id = loci_id_list[i]
+    loci = str(loci_id_list[i])
+    loci_num = loci.replace("rx_2_","")
+    loci_id = loci_num.replace("_4x.tsv","")
     num_samples_id = num_samples[i]
 
-    percentage = (float(num_samples_id)/96)*100
+    percentage = (float(num_samples_id)/87)*100
 
-    output.write("loci_" + str(loci_id) + "\t" + str(num_samples_id) + "\t" + str(percentage) + "\n")
+    output.write(str(loci_id) + "\t" + str(num_samples_id) + "\t" + str(percentage) + "\n")
