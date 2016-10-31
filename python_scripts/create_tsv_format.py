@@ -1,6 +1,8 @@
 
-file_name = open("loci_catalog_matches.txt")
-output = open("loci_catalog_matches.tsv", 'w')
+path_to_files = "/Users/madisonzwink/Desktop/Glazer_project/"
+
+file_name = open(path_to_files + "NewScaffoldOrder.csv")
+output = open(path_to_files + "NewScaffoldOrder.tsv", 'w')
 #loci_header = file_name.readline()
 loci_info = file_name.readlines()
 
@@ -8,11 +10,11 @@ loci_info = file_name.readlines()
 
 for loci in loci_info:
     loci_strip = loci.rstrip()
-    loci_split = loci_strip.split(" ")
+    loci_split = loci_strip.split(",")
 
-    for i in range(0,len(loci_split)):
+    for i in range(0,9):
 
-        if i == len(loci_split)-1:
+        if i == 9-1:
             output.write(str(loci_split[i]) + "\n")
         else:
             output.write(str(loci_split[i]) + "\t")

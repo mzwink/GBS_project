@@ -14,12 +14,12 @@ def make_loci_list(filename):
     return loci_list
 
 
-loci_list = make_loci_list("loci_id_rx15_3x.txt")
-output = open("loci_per_cov_rx15_3x.sh", 'w')
-output.write("cd /lustre1/mz00685/mice_alignment/stacks/rxstacks_lim_15/loci_id/3x_edit\n")
-output.write("touch num_samples_per_loci_rx15_3x.txt\n")
+loci_list = make_loci_list("4x_loci.txt")
+output = open("loci_per_cov_4x.sh", 'w')
+output.write("cd /lustre1/mz00685/mice_alignment/combined_runs/paired_unmapped_reads/ustacks/loci_id/4x\n")
+output.write("touch num_samples_per_loci_4x.txt\n")
 
 for l in loci_list:
-    output.write("awk '{ print $4 }' " +str(l) + " > temp.txt\n")
-    output.write("sort temp.txt | uniq | wc -l >> num_samples_per_loci_rx15_3x.txt\n")
+    output.write("awk '{ print $4 }' " + str(l) + " > temp.txt\n")
+    output.write("sort temp.txt | uniq | wc -l >> num_samples_per_loci_4x.txt\n")
     output.write("rm temp.txt\n")

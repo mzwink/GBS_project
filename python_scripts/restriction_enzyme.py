@@ -5,7 +5,7 @@ from Bio import SeqIO
 
 # open genome fasta and create output for catalog and sequences of ~500 bp around cut site
 mouse_genome = "/Users/madisonzwink/Desktop/GBS_project/demultiplex/mice_genome/mm9_genome.fa"
-output = open("/Users/madisonzwink/Desktop/GBS_project/demultiplex/restriction_enzyme_catalogf.txt", 'w')
+output = open("/Users/madisonzwink/Desktop/GBS_project/demultiplex/restriction_enzyme_catalog.txt", 'w')
 #test_output = open("/Users/madisonzwink/Desktop/GBS_project/demultiplex/sequence_test.txt", 'w')
 
 # parse the genome fasta file
@@ -15,9 +15,9 @@ for fasta in fasta_sequences:
 
     # Pattern that the enzyme apeK1 recognizes
     restr_enzyme_pos = r"GC(A|T)GC" # cuts after the first G
-    #restr_enzyme_neg = r"CG(A|T)CG" # cuts before the last G
+    restr_enzyme_neg = r"CG(A|T)CG" # cuts before the last G
     restr_enzyme_pos_masked = r"gc(a|t)gc" # same cut as pos
-    #restr_enzyme_neg_masked = r"cg(a|t)cg" # same cut as neg
+    restr_enzyme_neg_masked = r"cg(a|t)cg" # same cut as neg
 
     # compile pattern for iteration
     pos_match_list = re.compile(restr_enzyme_pos)

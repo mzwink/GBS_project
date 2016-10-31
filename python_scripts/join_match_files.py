@@ -18,27 +18,26 @@ def make_barcode_list(filename):
 
     return sorted(barcode_list)
 
-output = open("join_match_files.sh", 'w')
+output = open("join_chr19_cov.sh", 'w')
 barcodes = make_barcode_list("barcode_stack_format.txt")
 match_list = []
 
 for b in barcodes:
-    file_name = str(b)+"_matches.txt"
+    file_name = str(b)+"_restr_cov.txt"
     if os.path.isfile(file_name):
         match_list.append(file_name)
 
 #for i in range(0,len(match_list)):
 
 for match in match_list:
-    if str(match) == "A10_712_matches.txt":
-        output.write("join -1 1 -2 1 A10_712_matches.txt A11_713_matches.txt > temp.tsv\n")
-        output.write("cat temp.tsv > loci_catalog_matches.tsv\n")
+    if str(match) == "A10_712_restr_cov.txt":
+        output.write("join -1 1 -2 1 A10_712_restr_cov.txt A11_713_restr_cov.txt > temp.txt\n")
+        output.write("cat temp.txt > chr19_restr_site_cov.txt\n")
 
     elif str(match) == "A11_713_matches.txt":
         continue
 
     else:
 
-        output.write("join -1 1 -2 1 loci_catalog_matches.tsv " + str(match) + " > temp.tsv\n")
-        output.write("cat temp.tsv > loci_catalog_matches.tsv\n")
-        
+        output.write("join -1 1 -2 1 chr19_restr_site_cov.txt " + str(match) + " > temp.txt\n")
+        output.write("cat temp.txt > chr19_restr_site_cov.txt\n")

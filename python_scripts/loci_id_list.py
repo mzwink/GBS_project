@@ -16,15 +16,15 @@ def make_loci_list(filename):
     return loci_list
 
 
-loci_list = make_loci_list("uniq_catalog_loci.txt")
+loci_list = make_loci_list("4x_loci.txt")
 
 
 #output1 = open("loci_rx15_4x.sh", 'w')
 #output2 = open("loci_rx8_4x.sh", 'w')
 output = open("catalog_loci_4x.sh", 'w')
 #output3 = open("loci_rx2_2x.sh")
-output.write("#PBS -S /bin/bash\n#PBS -q batch\n#PBS -N loci_id_4x\n#PBS -l nodes=1:ppn=8:AMD\n#PBS -l mem=5gb\n#PBS -l walltime=98:00:00\n#PBS -M mzwink@uga.edu\n#PBS -m ae\n#PBS -j oe\n\n")
-output.write("cd /lustre1/mz00685/mice_alignment/stacks/trimmed_reads/ustacks\n")
+output.write("#PBS -S /bin/bash\n#PBS -q batch\n#PBS -N loci_id_3x\n#PBS -l nodes=1:ppn=8:AMD\n#PBS -l mem=5gb\n#PBS -l walltime=98:00:00\n#PBS -M mzwink@uga.edu\n#PBS -m ae\n#PBS -j oe\n\n")
+output.write("cd /lustre1/mz00685/mice_alignment/combined_runs/paired_unmapped_reads/ustacks\n")
 
 #for l in loci_list1:
 #    loci_id = l
@@ -40,4 +40,4 @@ output.write("cd /lustre1/mz00685/mice_alignment/stacks/trimmed_reads/ustacks\n"
 for l in loci_list:
     loci_id = l
 
-    output.write("awk '$3 == " + str(loci_id) + "' 4x_unmapped_matches.tsv  > loci_id/4x/loci_id_" + str(loci_id) + "_4x.tsv\n")
+    output.write("awk '$3 == " + str(loci_id) + "' 3x_unmapped_matches.tsv  > loci_id/3x/loci_id_" + str(loci_id) + "_3x.tsv\n")
