@@ -12,7 +12,7 @@ def make_barcode_list(filename):
 
         bar_strip = b.rstrip()
         bar_split = bar_strip.split("\t")
-        barcode = bar_split[2]
+        barcode = bar_split[0]
         barcode_list.insert(index, barcode)
         index+=1
 

@@ -2,11 +2,17 @@ import os.path
 
 #Make a dictionary for the bp for each sample, go through all possible restr_sites
 #sites, then add a + or - to indicate if there is coverage at that cut site
+#Mapping quality of 20 (info in sam file)
+#Look at nonrestricting fragments - subtract out the restriction sites, set window to be 500 bp
+#randomly draw these out, nonrestriction fragments - test windows
+#As many as I have restriction fragments - for random and same read counts
+#would expect little read counts - restriction digest works
 
 def make_coverage_dict(coverage_file, restr_file):
 
-    output_name = coverage_file.replace("_chr19_coverage.txt", "_restr_cov.txt")
-    indiv_sample = coverage_file.replace("_chr19_coverage.txt", "")
+    output_name = coverage_file.replace("_chr19_region_coverage.txt", "_restr_cov.txt")
+    sample = coverage_file.replace("_chr19_region_coverage.txt", "")
+    indiv_sample = sample.replace("chr19_non_restr_frags/", "")
 
     output = open(output_name,'w')
     output.write("CUT_FRAG\t" + str(indiv_sample) + "\n")
@@ -64,7 +70,7 @@ def make_barcode_list(filename):
 
         bar_strip = b.rstrip()
         bar_split = bar_strip.split("\t")
-        barcode = bar_split[2]
+        barcode = bar_split[0]
         barcode_list.insert(index, barcode)
         index+=1
 
@@ -74,7 +80,7 @@ def make_barcode_list(filename):
 barcodes = make_barcode_list("barcode_stack_format.txt")
 
 for b in barcodes:
-    file_name = str(b)+"_chr19_coverage.txt"
+    file_name = "chr19_non_restr_frags/" + str(b)+"_chr19_region_coverage.txt"
 
     if os.path.isfile(file_name):
-        make_coverage_dict(file_name, "restr_sites_chr19_region.txt")
+        make_coverage_dict(file_name, "chr19_non_restr_frags.txt")
