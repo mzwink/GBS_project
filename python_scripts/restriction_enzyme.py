@@ -21,9 +21,9 @@ for fasta in fasta_sequences:
 
     # compile pattern for iteration
     pos_match_list = re.compile(restr_enzyme_pos)
-    #neg_match_list = re.compile(restr_enzyme_neg)
+    neg_match_list = re.compile(restr_enzyme_neg)
     pos_masked_match_list = re.compile(restr_enzyme_pos_masked)
-    #neg_masked_match_list = re.compile(restr_enzyme_neg_masked)
+    neg_masked_match_list = re.compile(restr_enzyme_neg_masked)
 
 
     # Make catalog of restriction enzyme cut sites in the mouse genome
@@ -33,26 +33,26 @@ for fasta in fasta_sequences:
         cut_site_end = match.end()
 
         # when checking read depth, start 10 bp into the cut site
-        read_depth_check = cut_site_start + 10
+        #read_depth_check = cut_site_start + 10
 
         # to pull out 500 bp around the cut site
         #sequence_start = cut_site_start - 250
         #sequence_end = cut_site_end + 250
 
         # Catalog of where in the genome the enzyme is predicted to cut
-        output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\t" + str(cut_site_end) + "\t" + str(read_depth_check) + "\tforward\n")
+        output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\tforward\n")
 
         # 500 bp of the sequence around the cut site
         #test_output.write(str(fasta.id) + ">\n" + str(sequence[sequence_start:sequence_end]) + "\n")
 
     # Do the same for the other patterns the enzyme will recognize
-    #for match in neg_match_list.finditer(sequence):
-        #cut_site_start = match.start() + 4
-        #cut_site_end = match.end()
+    for match in neg_match_list.finditer(sequence):
+        cut_site_start = match.start() + 4
+        cut_site_end = match.end()
 
-        #read_depth_check = cut_site_start + 10
+        read_depth_check = cut_site_start + 10
 
-        #output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\t" + str(cut_site_end) + "\t" + str(read_depth_check) + "\treverse\n")
+        output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\treverse\n")
 
         #sequence_start = cut_site_start - 250
         #sequence_end = cut_site_end + 250
@@ -66,7 +66,7 @@ for fasta in fasta_sequences:
 
         read_depth_check = cut_site_start + 10
 
-        output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\t" + str(cut_site_end) + "\t" + str(read_depth_check) + "\tforward/masked\n")
+        output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\tforward/masked\n")
 
         #sequence_start = cut_site_start - 250
         #sequence_end = cut_site_end + 250
@@ -74,13 +74,13 @@ for fasta in fasta_sequences:
         #test_output.write(str(fasta.id) + ">\n" + str(sequence[sequence_start:sequence_end]) + "\n")
 
 
-    #for match in neg_masked_match_list.finditer(sequence):
-        #cut_site_start = match.start() + 4
-        #cut_site_end = match.end()
+    for match in neg_masked_match_list.finditer(sequence):
+        cut_site_start = match.start() + 4
+        cut_site_end = match.end()
 
-        #read_depth_check = cut_site_start + 10
+        read_depth_check = cut_site_start + 10
 
-        #output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\t" + str(cut_site_end) + "\t" + str(read_depth_check) + "\treverse/masked\n" )
+        output.write(str(fasta.id) + "\t" + str(cut_site_start) + "\treverse/masked\n" )
 
         #sequence_start = cut_site_start - 250
         #sequence_end = cut_site_end + 250
